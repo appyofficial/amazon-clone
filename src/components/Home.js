@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/Home.css";
-import homeBanner from "../images/home-banner.png";
 import Product from "./Product";
 import { v4 as uuidv4 } from "uuid";
 
@@ -67,11 +66,16 @@ const Home = () => {
   return (
     <div className="home">
       <div className="home__container">
-        <img className="home__image" alt="amazon banner" src={homeBanner} />
+        <img
+          className="home__image"
+          alt="amazon banner"
+          src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_45M_v2_2x._CB432458382_.jpg"
+        />
       </div>
       <div className="home__row">
         {newProducts.map(({ title, id, price, imageUrl, rating }) => (
           <Product
+            key={id}
             title={title}
             id={id}
             price={price}
@@ -83,6 +87,7 @@ const Home = () => {
       <div className="home__row">
         {TodaysDeals.map(({ title, id, price, imageUrl, rating }) => (
           <Product
+            key={id}
             title={title}
             id={id}
             price={price}
@@ -94,6 +99,7 @@ const Home = () => {
       <div className="home__row">
         {featured.map(({ title, id, price, imageUrl, rating }) => (
           <Product
+            key={id}
             title={title}
             id={id}
             price={price}

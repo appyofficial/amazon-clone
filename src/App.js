@@ -3,16 +3,21 @@ import "./App.css";
 import { Header, Home } from "./components";
 import { Switch, Route } from "react-router-dom";
 import Checkout from "./components/Checkout";
+import Login from "./components/Login";
 
 function App() {
   return (
     <div className="app">
-      <Header />
       <Switch>
+        <Route path="/login">
+          <Login />
+        </Route>
         <Route exact path="/checkout">
+          <Header />
           <Checkout />
         </Route>
         <Route exact path="/">
+          <Header />
           <Home />
         </Route>
       </Switch>
