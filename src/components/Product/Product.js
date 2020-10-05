@@ -1,5 +1,5 @@
 import React from "react";
-import { Rating } from "..";
+import { Rating, AddToCart } from "..";
 import { useStateValue } from "../../context/StateProvider";
 import "./styles/product.css";
 
@@ -30,7 +30,7 @@ export default function Product({ id, title, imageUrl, price, rating }) {
         <Rating rating={rating} />
       </div>
       <img src={imageUrl} alt={title} />
-      <button onClick={addToBasket}>Add to basket</button>
+      <AddToCart addToBasket={addToBasket}>Add to basket</AddToCart>
     </div>
   );
 }
