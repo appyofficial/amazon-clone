@@ -1,0 +1,29 @@
+.productDetail__main {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.productDetail__mainImg {
+  max-width: 500px;
+  flex: 1;
+  width: 100%;
+}
+
+.productDetail__mainDis {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  width: 100%;
+  padding: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.productDetail__addtocart {
+  max-width: 280px;
+  width: 100%;
+  border: 1px black solid;
+  padding: 10px;
+}

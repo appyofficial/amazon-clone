@@ -1,6 +1,6 @@
 import React from "react";
-import { useStateValue } from "../context/StateProvider";
-import "../styles/CheckoutProduct.css";
+import { useStateValue } from "../../context/StateProvider";
+import "./styles/CheckoutProduct.css";
 
 export default function CheckoutProduct({ id, title, image, price, rating }) {
   const [, dispatch] = useStateValue();
@@ -12,7 +12,7 @@ export default function CheckoutProduct({ id, title, image, price, rating }) {
   };
   return (
     <div className="checkoutProduct">
-      <div>
+      <div className="checkoutProduct__imgContainer">
         <img className="checkoutProduct__image" src={image} alt={title} />
       </div>
 

@@ -1,7 +1,9 @@
 import React from "react";
-import "../styles/Home.css";
-import Product from "./Product";
+import "./styles/Home.css";
+import { Product } from "../../components";
+import products from "../../data/products_listening";
 import { v4 as uuidv4 } from "uuid";
+import { randomProducts } from "../../utils";
 
 const newProducts = [
   {
@@ -22,6 +24,8 @@ const newProducts = [
     rating: 5,
   },
 ];
+
+const examplepro = randomProducts(products, 2);
 
 const TodaysDeals = [
   {
@@ -72,6 +76,7 @@ const Home = () => {
           src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_45M_v2_2x._CB432458382_.jpg"
         />
       </div>
+
       <div className="home__row">
         {newProducts.map(({ title, id, price, imageUrl, rating }) => (
           <Product
@@ -105,6 +110,14 @@ const Home = () => {
             price={price}
             imageUrl={imageUrl}
             rating={rating}
+          />
+        ))}
+      </div>
+      <div className="home__row">
+        {examplepro.map((product) => (
+          <Product
+            title={product["Product Title"]}
+            imageUrl={product["Image Urls"].split("|")[0]}
           />
         ))}
       </div>

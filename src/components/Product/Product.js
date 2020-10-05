@@ -1,6 +1,7 @@
 import React from "react";
-import { useStateValue } from "../context/StateProvider";
-import "../styles/product.css";
+import { Rating } from "..";
+import { useStateValue } from "../../context/StateProvider";
+import "./styles/product.css";
 
 export default function Product({ id, title, imageUrl, price, rating }) {
   const [, dispatch] = useStateValue();
@@ -26,17 +27,7 @@ export default function Product({ id, title, imageUrl, price, rating }) {
           <small>SEK</small>
           <strong> {price}</strong>
         </p>
-        <div className="product__rating">
-          {Array(rating)
-            .fill()
-            .map((_, i) => (
-              <p key={i}>
-                <span role="img" aria-label="star">
-                  ⭐
-                </span>
-              </p>
-            ))}
-        </div>
+        <Rating rating={rating} />
       </div>
       <img src={imageUrl} alt={title} />
       <button onClick={addToBasket}>Add to basket</button>

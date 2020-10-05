@@ -28,3 +28,21 @@
   padding: 10px;
   border-bottom: 1px solid lightgray;
 }
+
+.empty_cart {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.empty_cart_dis {
+  text-align: center;
+  color: grey;
+}
+
+.empty_cart_dis > h3 {
+  font-size: 28px;
+  margin-bottom: 18px;
+}

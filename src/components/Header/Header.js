@@ -1,9 +1,10 @@
 import React from "react";
-import "../styles/Header.css";
+import "./styles/Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { Link } from "react-router-dom";
-import { useStateValue } from "../context/StateProvider";
+import { useStateValue } from "../../context/StateProvider";
+import { auth } from "../../firebase";
 
 const HeaderLogo = () => {
   return (
@@ -32,25 +33,29 @@ const HeaderSearch = () => {
   );
 };
 
-const HeaderNavOption = ({ lineOne, lineTwo }) => {
+const HeaderNavOption = ({ lineOne, lineTwo, onClick }) => {
   return (
-    <div className="header__option">
+    <div className="header__option" onClick={onClick}>
       <span className="header__optionLineOne">{lineOne}</span>
       <span className="header__optionLineTwo">{lineTwo}</span>
     </div>
   );
 };
 
-const HeaderNav = ({ productsInBasket }) => {
+const HeaderNav = ({ productsInBasket, user, handleClick }) => {
   return (
     <div className="header__nav">
-      <Link to="/login">
-        <HeaderNavOption lineOne="Hello Guest" lineTwo="Sign In" />
+      <Link to={!user && "/login"}>
+        <HeaderNavOption
+          onClick={handleClick}
+          lineOne={user ? user.email : "Hello Guest"}
+          lineTwo={user ? "Sign out" : "Sign in"}
+        />
       </Link>
       <HeaderNavOption lineOne="Return" lineTwo="& Orders" />
       <HeaderNavOption lineOne="Your" lineTwo="Prime" />
       {/*Basket */}
-      <Link to="/checkout">
+      <Link to="/cart">
         <div className="header__optionBasket">
           <ShoppingBasketIcon />
           <span className="header__optionLineTwo header__optionBasketCount">
@@ -64,12 +69,22 @@ const HeaderNav = ({ productsInBasket }) => {
 
 //Header
 const Header = () => {
-  const [{ basket }] = useStateValue();
+  const [{ basket, user }] = useStateValue();
+
+  const handleAuthentication = () => {
+    if (user) {
+      auth.signOut();
+    }
+  };
   return (
     <div className="header">
       <HeaderLogo />
       <HeaderSearch />
-      <HeaderNav productsInBasket={basket.length} />
+      <HeaderNav
+        productsInBasket={basket.length}
+        user={user}
+        handleClick={handleAuthentication}
+      />
     </div>
   );
 };

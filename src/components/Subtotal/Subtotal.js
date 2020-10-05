@@ -1,10 +1,12 @@
 import React from "react";
-import "../styles/Subtotal.css";
+import "./styles/Subtotal.css";
 import CurrencyFormat from "react-currency-format";
-import { useStateValue } from "../context/StateProvider";
-import { getBasketTotal } from "../context/reducer";
+import { useStateValue } from "../../context/StateProvider";
+import { getBasketTotal } from "../../context/reducer";
+import { useHistory } from "react-router-dom";
 
 export default function Subtotal() {
+  const history = useHistory();
   const [{ basket }] = useStateValue();
   return (
     <div className="subtotal">
@@ -25,7 +27,9 @@ export default function Subtotal() {
         thousandSeparator={true}
         prefix={"SEK"}
       />
-      <button>Proceed to checkout</button>
+      <button onClick={() => history.push("/payment")}>
+        Proceed to checkout
+      </button>
     </div>
   );
 }
