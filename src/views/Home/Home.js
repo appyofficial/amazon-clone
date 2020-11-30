@@ -1,7 +1,6 @@
 import React from "react";
 import "./styles/Home.css";
 import { Product } from "../../components";
-import products from "../../data/products_listening";
 import { v4 as uuidv4 } from "uuid";
 import { randomProducts } from "../../utils";
 
@@ -24,8 +23,6 @@ const newProducts = [
     rating: 5,
   },
 ];
-
-const examplepro = randomProducts(products, 2);
 
 const TodaysDeals = [
   {
@@ -110,14 +107,6 @@ const Home = () => {
             price={price}
             imageUrl={imageUrl}
             rating={rating}
-          />
-        ))}
-      </div>
-      <div className="home__row">
-        {examplepro.map((product) => (
-          <Product
-            title={product["Product Title"]}
-            imageUrl={product["Image Urls"].split("|")[0]}
           />
         ))}
       </div>
